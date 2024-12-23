@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Londrina+Sketch&display=swap');
+        body {
+            background : url(https://iili.io/2OucIZQ.jpg);
+            font-family: Roboto Condensed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+    
+    background-repeat: no-repeat;
+    background-size: 100%;
+        }
+       
+        h2 {
+            color: #034524;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+        }
+       
+        form {
+         background:rgba(173, 219, 234, 0.144);
+            padding: 20px 40px;
+            border-radius: 10px;
+         /*   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);*/
+            text-align: center;
+         /*   backdrop-filter: blur(20px);*/
+        }
+        input {
+            backdrop-filter: blur(20px);
+            font-weight:bold;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+           box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+            background:rgba(137, 137, 255, 0.04);
+            
+        }
+        :-ms-input-placeholder{
+            color:white;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(45deg, #20917595, #2a7b969c);
+            border: none;
+            border-radius: 10px;
+            color:black;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight:bold;
+           /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);*/
+            transition: transform 0.2s;
+            box-shadow:inset 2px 2px 5px  rgba(0, 0, 0, 0.7);
+            
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        @media  (max-width:480px) {
+            body{
+                background:url(https://img.freepik.com/premium-photo/stack-books-turquoise-background-vibrant-eyecatching-arrangement_521733-18739.jpg)
+            }
+            button{
+                background: linear-gradient(45deg, #75e6c9b0, #55b6d783);
+                color:black;
+                font-family: Roboto Condensed;
+                font-weight: 800;
+               h2{
+                color:rgb(18, 96, 138);
+               }
+                
+        }
+       
+        }
+    
+     </style>
+    </head>
+    <body>
+   
+            <center>
+               <h1>ADITYA LIBRARY</h1>
+                <h2>LOGIN</h2>
+                <form id="loginForm" onsubmit="return handleSubmit()">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <br><br>
+                    <input type="number" id="suc" name="suc" placeholder="Your SUC ID" required>
+                    <br><br>
+                    <input type="password" id="password" name="password" placeholder="Your Password" required>
+                    <br><br>
+                    <button type="submit">SUBMIT</button>
+                </form>
+                
+            </center>
+            <script>
+                function handleSubmit() {
+                    const name = document.getElementById('name').value;
+                    const sucID = document.getElementById('suc').value;
+                    const password = document.getElementById('password').value;
+                    if (sucID.length < 10) {
+                        alert("SUC ID must be at least 10 digits long.");
+                        return false;
+                    }
+                    const lastFourDigits = sucID.slice(-4);
+                    if (password.length !== 4 || !password.endsWith(lastFourDigits)) {
+                        alert("Password must be 4 digits long and end with the last 4 digits of your SUC ID.");
+                        return false;
+                    }
+                    localStorage.setItem('username', name);
+                    window.location.href = 'cop.html';
+                    return false;
+                }
+            </script>
+    </body>
+</html>
